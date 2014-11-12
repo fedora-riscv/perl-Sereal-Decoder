@@ -1,6 +1,6 @@
 Name:           perl-Sereal-Decoder
-Version:        3.002
-Release:        2%{?dist}
+Version:        3.003
+Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
@@ -9,10 +9,6 @@ License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Sereal-Decoder/
 Source0:        http://www.cpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-%{version}.tar.gz
-# Use external csnappy library, <https://github.com/Sereal/Sereal/issues/72>
-Patch0:         Sereal-3.002_001-Prefer-external-csnappy-library-in-Sereal-Decoder.patch
-# Use external miniz library, <https://github.com/Sereal/Sereal/issues/72>
-Patch1:         Sereal-3.002_001-Prefer-external-miniz-library-in-Sereal-Decoder.patch
 BuildRequires:  csnappy-devel
 BuildRequires:  miniz-devel
 BuildRequires:  perl
@@ -58,8 +54,6 @@ and feature-rich binary protocol called Sereal.
 
 %prep
 %setup -q -n Sereal-Decoder-%{version}
-%patch0 -p3
-%patch1 -p3
 # Remove bundled Perl modules
 rm -r ./inc/Devel
 sed -i -s '/^inc\/Devel/d' MANIFEST
@@ -90,6 +84,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Wed Nov 12 2014 Petr Pisar <ppisar@redhat.com> - 3.003-1
+- 3.003 bump
+
 * Thu Nov 06 2014 Petr Pisar <ppisar@redhat.com> - 3.002-2
 - Finish Sereal bootstrap
 
