@@ -1,5 +1,5 @@
 Name:           perl-Sereal-Decoder
-Version:        3.003
+Version:        3.004
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -15,7 +15,7 @@ BuildRequires:  perl
 BuildRequires:  perl(Config)
 BuildRequires:  perl(Devel::CheckLib)
 BuildRequires:  perl(ExtUtils::Constant)
-BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.0
 BuildRequires:  perl(File::Find)
 BuildRequires:  perl(File::Path)
 BuildRequires:  perl(File::Spec)
@@ -84,6 +84,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Mon Jan 05 2015 Petr Pisar <ppisar@redhat.com> - 3.004-1
+- 3.004 bump
+
 * Wed Nov 12 2014 Petr Pisar <ppisar@redhat.com> - 3.003-1
 - 3.003 bump
 
