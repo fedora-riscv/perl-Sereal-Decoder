@@ -1,6 +1,6 @@
 Name:           perl-Sereal-Decoder
 Version:        3.005
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
@@ -84,6 +84,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Wed Jun 10 2015 Jitka Plesnikova <jplesnik@redhat.com> - 3.005-3
+- Perl 5.22 re-rebuild of bootstrapped packages
+
 * Sat Jun 06 2015 Jitka Plesnikova <jplesnik@redhat.com> - 3.005-2
 - Perl 5.22 rebuild
 
