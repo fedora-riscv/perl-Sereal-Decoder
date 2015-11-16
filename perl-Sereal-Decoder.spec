@@ -1,5 +1,5 @@
 Name:           perl-Sereal-Decoder
-Version:        3.005
+Version:        3.006
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -9,26 +9,31 @@ License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Sereal-Decoder/
 Source0:        http://www.cpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-%{version}.tar.gz
+BuildRequires:  coreutils
 BuildRequires:  csnappy-devel
+BuildRequires:  findutils
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  miniz-devel
 BuildRequires:  perl
+BuildRequires:  perl-devel
 BuildRequires:  perl(Config)
 BuildRequires:  perl(Devel::CheckLib)
-BuildRequires:  perl(ExtUtils::Constant)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.0
 BuildRequires:  perl(File::Find)
 BuildRequires:  perl(File::Path)
 BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
+BuildRequires:  sed
 # Run-time:
 BuildRequires:  perl(Carp)
+BuildRequires:  perl(constant)
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(XSLoader)
 # Tests:
 # Benchmark not used
 BuildRequires:  perl(blib)
-BuildRequires:  perl(constant)
 BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(Devel::Peek)
 BuildRequires:  perl(Encode)
@@ -84,6 +89,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Mon Nov 16 2015 Petr Pisar <ppisar@redhat.com> - 3.006-1
+- 3.006 bump
+
 * Tue Jan 06 2015 Petr Pisar <ppisar@redhat.com> - 3.005-1
 - 3.005 bump
 
