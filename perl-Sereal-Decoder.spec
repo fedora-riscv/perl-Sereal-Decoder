@@ -1,6 +1,6 @@
 Name:           perl-Sereal-Decoder
 Version:        3.007
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
@@ -51,7 +51,9 @@ BuildRequires:  perl(threads)
 BuildRequires:  perl(utf8)
 # Optional tests:
 %if !%{defined perl_bootstrap}
-BuildRequires:  perl(Sereal::Encoder) >= 3.005.003
+# Some tests require Sereal::Encoder 3.005003, but most of them do not require
+# exact version. Thus do not constrain the version here.
+BuildRequires:  perl(Sereal::Encoder)
 BuildRequires:  perl(Tie::Array)
 BuildRequires:  perl(Tie::Hash)
 BuildRequires:  perl(Tie::Scalar)
@@ -94,6 +96,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Fri Nov 27 2015 Petr Pisar <ppisar@redhat.com> - 3.007-2
+- Do not constrain Sereal::Encoder version
+
 * Fri Nov 27 2015 Petr Pisar <ppisar@redhat.com> - 3.007-1
 - 3.007 bump
 
