@@ -1,5 +1,5 @@
 Name:           perl-Sereal-Decoder
-Version:        3.006
+Version:        3.007
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -18,6 +18,7 @@ BuildRequires:  miniz-devel
 BuildRequires:  perl
 BuildRequires:  perl-devel
 BuildRequires:  perl(Config)
+BuildRequires:  perl(constant)
 BuildRequires:  perl(Devel::CheckLib)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.0
 BuildRequires:  perl(File::Find)
@@ -28,12 +29,12 @@ BuildRequires:  perl(warnings)
 BuildRequires:  sed
 # Run-time:
 BuildRequires:  perl(Carp)
-BuildRequires:  perl(constant)
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(XSLoader)
 # Tests:
 # Benchmark not used
 BuildRequires:  perl(blib)
+BuildRequires:  perl(Cwd)
 BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(Devel::Peek)
 BuildRequires:  perl(Encode)
@@ -41,9 +42,6 @@ BuildRequires:  perl(integer)
 BuildRequires:  perl(lib)
 BuildRequires:  perl(overload)
 BuildRequires:  perl(Scalar::Util)
-%if !%{defined perl_bootstrap}
-BuildRequires:  perl(Sereal::Encoder)
-%endif
 BuildRequires:  perl(Storable)
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
@@ -51,6 +49,13 @@ BuildRequires:  perl(Test::Warn)
 BuildRequires:  perl(threads)
 # Time::HiRes not used
 BuildRequires:  perl(utf8)
+# Optional tests:
+%if !%{defined perl_bootstrap}
+BuildRequires:  perl(Sereal::Encoder) >= 3.005.003
+BuildRequires:  perl(Tie::Array)
+BuildRequires:  perl(Tie::Hash)
+BuildRequires:  perl(Tie::Scalar)
+%endif
 Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
@@ -89,6 +94,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Fri Nov 27 2015 Petr Pisar <ppisar@redhat.com> - 3.007-1
+- 3.007 bump
+
 * Mon Nov 16 2015 Petr Pisar <ppisar@redhat.com> - 3.006-1
 - 3.006 bump
 
