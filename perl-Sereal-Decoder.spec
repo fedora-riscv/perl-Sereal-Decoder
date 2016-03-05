@@ -1,6 +1,9 @@
+# Temporary until Sereal::Encoder is not packaged
+%global perl_bootstrap 1
+
 Name:           perl-Sereal-Decoder
 Version:        3.003
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
@@ -9,6 +12,7 @@ License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Sereal-Decoder/
 Source0:        http://www.cpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-%{version}.tar.gz
+
 BuildRequires:  csnappy-devel
 BuildRequires:  miniz-devel
 BuildRequires:  perl
@@ -21,10 +25,12 @@ BuildRequires:  perl(File::Path)
 BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
+
 # Run-time:
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(Exporter)
 BuildRequires:  perl(XSLoader)
+
 # Tests:
 # Benchmark not used
 BuildRequires:  perl(blib)
@@ -46,6 +52,7 @@ BuildRequires:  perl(Test::Warn)
 BuildRequires:  perl(threads)
 # Time::HiRes not used
 BuildRequires:  perl(utf8)
+
 Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
@@ -84,6 +91,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Fri Mar 04 2016 Denis Fateyev <denis@fateyev.com> - 3.003-2
+- Bootstrap Sereal module
+
 * Wed Nov 12 2014 Petr Pisar <ppisar@redhat.com> - 3.003-1
 - 3.003 bump
 
