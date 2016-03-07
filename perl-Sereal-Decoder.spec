@@ -1,9 +1,6 @@
-# Temporary until Sereal::Encoder is not packaged
-%global perl_bootstrap 1
-
 Name:           perl-Sereal-Decoder
 Version:        3.003
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
@@ -91,6 +88,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Mon Mar 07 2016 Denis Fateyev <denis@fateyev.com> - 3.003-3
+- Finish Sereal module bootstrap
+
 * Fri Mar 04 2016 Denis Fateyev <denis@fateyev.com> - 3.003-2
 - Bootstrap Sereal module
 
