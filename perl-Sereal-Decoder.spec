@@ -17,6 +17,7 @@ BuildRequires:  make
 BuildRequires:  miniz-devel
 BuildRequires:  perl
 BuildRequires:  perl-devel
+BuildRequires:  perl-generators
 BuildRequires:  perl(Config)
 BuildRequires:  perl(constant)
 BuildRequires:  perl(Devel::CheckLib)
