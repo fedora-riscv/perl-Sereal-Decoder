@@ -1,6 +1,6 @@
 Name:           perl-Sereal-Decoder
-Version:        3.003
-Release:        3%{?dist}
+Version:        3.014
+Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
@@ -9,19 +9,27 @@ License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Sereal-Decoder/
 Source0:        http://www.cpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-%{version}.tar.gz
+Patch0:         Sereal-Decoder-EU-MM-fix-version.patch
 
+BuildRequires:  coreutils
 BuildRequires:  csnappy-devel
+BuildRequires:  findutils
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  miniz-devel
 BuildRequires:  perl
+BuildRequires:  perl-devel
+BuildRequires:  perl-generators
 BuildRequires:  perl(Config)
+BuildRequires:  perl(constant)
 BuildRequires:  perl(Devel::CheckLib)
-BuildRequires:  perl(ExtUtils::Constant)
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(File::Find)
 BuildRequires:  perl(File::Path)
 BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
+BuildRequires:  sed
 
 # Run-time:
 BuildRequires:  perl(Carp)
@@ -31,7 +39,7 @@ BuildRequires:  perl(XSLoader)
 # Tests:
 # Benchmark not used
 BuildRequires:  perl(blib)
-BuildRequires:  perl(constant)
+BuildRequires:  perl(Cwd)
 BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(Devel::Peek)
 BuildRequires:  perl(Encode)
@@ -39,9 +47,6 @@ BuildRequires:  perl(integer)
 BuildRequires:  perl(lib)
 BuildRequires:  perl(overload)
 BuildRequires:  perl(Scalar::Util)
-%if !%{defined perl_bootstrap}
-BuildRequires:  perl(Sereal::Encoder)
-%endif
 BuildRequires:  perl(Storable)
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
@@ -49,6 +54,16 @@ BuildRequires:  perl(Test::Warn)
 BuildRequires:  perl(threads)
 # Time::HiRes not used
 BuildRequires:  perl(utf8)
+
+# Optional tests:
+%if !%{defined perl_bootstrap}
+# Some tests require Sereal::Encoder 3.005003, but most of them do not require
+# exact version. Thus do not constrain the version here.
+BuildRequires:  perl(Sereal::Encoder)
+BuildRequires:  perl(Tie::Array)
+BuildRequires:  perl(Tie::Hash)
+BuildRequires:  perl(Tie::Scalar)
+%endif
 
 Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
@@ -58,6 +73,7 @@ and feature-rich binary protocol called Sereal.
 
 %prep
 %setup -q -n Sereal-Decoder-%{version}
+%patch0 -p1
 # Remove bundled Perl modules
 rm -r ./inc/Devel
 sed -i -s '/^inc\/Devel/d' MANIFEST
@@ -88,6 +104,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Fri Jul 15 2016 Denis Fateyev <denis@fateyev.com> - 3.014-1
+- Bumped to 3.014 and synced to master
+
 * Mon Mar 07 2016 Denis Fateyev <denis@fateyev.com> - 3.003-3
 - Finish Sereal module bootstrap
 

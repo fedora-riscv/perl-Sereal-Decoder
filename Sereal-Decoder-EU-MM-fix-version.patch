@@ -1,0 +1,11 @@
+--- a/Makefile.PL	2015-12-03 00:19:43.000000000 +0600
++++ b/Makefile.PL	2016-07-16 20:21:24.962000000 +0600
+@@ -68,7 +68,7 @@
+         'ExtUtils::ParseXS' => '2.21',
+     },
+     CONFIGURE_REQUIRES => {
+-        'ExtUtils::MakeMaker' => '7.0',
++        'ExtUtils::MakeMaker' => '6.68',
+     },
+     NAME              => $module,
+     VERSION_FROM      => 'lib/Sereal/Decoder.pm', # finds $VERSION
