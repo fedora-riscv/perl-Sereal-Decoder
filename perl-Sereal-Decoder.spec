@@ -1,5 +1,5 @@
 Name:           perl-Sereal-Decoder
-Version:        3.014
+Version:        3.015
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -82,8 +82,8 @@ make %{?_smp_mflags}
 
 %install
 make pure_install DESTDIR=$RPM_BUILD_ROOT
-find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} \;
-find $RPM_BUILD_ROOT -type f -name '*.bs' -size 0 -exec rm -f {} \;
+find $RPM_BUILD_ROOT -type f -name .packlist -delete
+find $RPM_BUILD_ROOT -type f -name '*.bs' -size 0 -delete
 %{_fixperms} $RPM_BUILD_ROOT/*
 
 %check
@@ -96,6 +96,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Mon Sep 05 2016 Petr Pisar <ppisar@redhat.com> - 3.015-1
+- 3.015 bump
+
 * Mon Dec 07 2015 Petr Pisar <ppisar@redhat.com> - 3.014-1
 - 3.014 bump
 
