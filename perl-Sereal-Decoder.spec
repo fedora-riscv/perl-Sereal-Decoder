@@ -1,5 +1,5 @@
 Name:           perl-Sereal-Decoder
-Version:        3.014
+Version:        3.015
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -104,6 +104,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Sat Sep 03 2016 Denis Fateyev <denis@fateyev.com> - 3.015-1
+- Bumped to 3.015
+
 * Fri Jul 15 2016 Denis Fateyev <denis@fateyev.com> - 3.014-1
 - Bumped to 3.014 and synced to master
 
