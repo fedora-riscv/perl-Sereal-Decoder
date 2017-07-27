@@ -1,6 +1,6 @@
 Name:           perl-Sereal-Decoder
 Version:        3.015
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
@@ -97,6 +97,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.015-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Wed Jun 07 2017 Jitka Plesnikova <jplesnik@redhat.com> - 3.015-4
 - Perl 5.26 re-rebuild of bootstrapped packages
 
