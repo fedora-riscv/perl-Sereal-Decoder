@@ -1,30 +1,31 @@
 Name:           perl-Sereal-Decoder
-Version:        3.015
-Release:        6%{?dist}
+Version:        4.004
+Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
 # snappy:                   BSD (unbundled)
+# zstd:                     BSD (unbundled)
 License:        GPL+ or Artistic
-Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Sereal-Decoder/
 Source0:        http://www.cpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-%{version}.tar.gz
 BuildRequires:  coreutils
 BuildRequires:  csnappy-devel
 BuildRequires:  findutils
 BuildRequires:  gcc
+BuildRequires:  libzstd-devel
 BuildRequires:  make
 BuildRequires:  miniz-devel
-BuildRequires:  perl-interpreter
 BuildRequires:  perl-devel
 BuildRequires:  perl-generators
+BuildRequires:  perl-interpreter
 BuildRequires:  perl(Config)
 BuildRequires:  perl(constant)
 BuildRequires:  perl(Devel::CheckLib)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.0
-BuildRequires:  perl(File::Find)
-BuildRequires:  perl(File::Path)
-BuildRequires:  perl(File::Spec)
+# File::Find not used
+# File::Path not used in inc/Sereal/BuildTools.pm
+# File::Spec not used in inc/Sereal/BuildTools.pm
 BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
 BuildRequires:  sed
@@ -39,6 +40,8 @@ BuildRequires:  perl(Cwd)
 BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(Devel::Peek)
 BuildRequires:  perl(Encode)
+BuildRequires:  perl(File::Path)
+BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(integer)
 BuildRequires:  perl(lib)
 BuildRequires:  perl(overload)
@@ -69,21 +72,25 @@ and feature-rich binary protocol called Sereal.
 %setup -q -n Sereal-Decoder-%{version}
 # Remove bundled Perl modules
 rm -r ./inc/Devel
-sed -i -s '/^inc\/Devel/d' MANIFEST
+sed -i -e '/^inc\/Devel\//d' MANIFEST
 # Remove bundled csnappy
 rm -r ./snappy
-sed -i -s '/^snappy/d' MANIFEST
+sed -i -e '/^snappy\//d' MANIFEST
 # Remove bundled miniz
 rm miniz.*
-sed -i -s '/^miniz\./d' MANIFEST
+sed -i -e '/^miniz\./d' MANIFEST
+# Remove bundled zstd
+rm -r zstd
+sed -i -e '/^zstd\//d' MANIFEST
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="$RPM_OPT_FLAGS"
+unset DEBUG SEREAL_USE_BUNDLED_LIBS SEREAL_USE_BUNDLED_CSNAPPY \
+    SEREAL_USE_BUNDLED_MINIZ SEREAL_USE_BUNDLED_ZSTD
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 OPTIMIZE="$RPM_OPT_FLAGS"
 make %{?_smp_mflags}
 
 %install
 make pure_install DESTDIR=$RPM_BUILD_ROOT
-find $RPM_BUILD_ROOT -type f -name .packlist -delete
 find $RPM_BUILD_ROOT -type f -name '*.bs' -size 0 -delete
 %{_fixperms} $RPM_BUILD_ROOT/*
 
@@ -97,6 +104,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Mon Nov 13 2017 Petr Pisar <ppisar@redhat.com> - 4.004-1
+- 4.004 bump
+
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.015-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
