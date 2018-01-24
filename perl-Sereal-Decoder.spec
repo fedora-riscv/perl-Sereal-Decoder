@@ -1,5 +1,5 @@
 Name:           perl-Sereal-Decoder
-Version:        4.004
+Version:        4.005
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -104,6 +104,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Wed Jan 24 2018 Jitka Plesnikova <jplesnik@redhat.com> - 4.005-1
+- 4.005 bump
+
 * Mon Nov 13 2017 Petr Pisar <ppisar@redhat.com> - 4.004-1
 - 4.004 bump
 
