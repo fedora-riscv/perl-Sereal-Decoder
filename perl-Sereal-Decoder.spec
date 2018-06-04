@@ -7,8 +7,8 @@ Summary:        Perl deserialization for Sereal format
 # snappy:                   BSD (unbundled)
 # zstd:                     BSD (unbundled)
 License:        GPL+ or Artistic
-URL:            http://search.cpan.org/dist/Sereal-Decoder/
-Source0:        http://www.cpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-%{version}.tar.gz
+URL:            https://metacpan.org/release/Sereal-Decoder
+Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-%{version}.tar.gz
 BuildRequires:  coreutils
 BuildRequires:  csnappy-devel
 BuildRequires:  findutils
