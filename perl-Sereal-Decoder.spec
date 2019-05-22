@@ -1,8 +1,6 @@
-%global perl_bootstrap 1
-
 Name:           perl-Sereal-Decoder
 Version:        4.007
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
@@ -106,6 +104,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Wed May 22 2019 Petr Pisar <ppisar@redhat.com> - 4.007-3
+- Finish a bootstrap cycle when rebuild against miniz-2.1.0
+
 * Wed May 22 2019 Petr Pisar <ppisar@redhat.com> - 4.007-2
 - Rebuild against miniz-2.1.0
 
