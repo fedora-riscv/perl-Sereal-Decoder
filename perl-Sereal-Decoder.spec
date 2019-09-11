@@ -1,3 +1,4 @@
+%global perl_bootstrap 1
 Name:           perl-Sereal-Decoder
 Version:        4.007
 Release:        6%{?dist}
