@@ -1,7 +1,6 @@
-%global perl_bootstrap 1
 Name:           perl-Sereal-Decoder
 Version:        4.007
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
@@ -105,6 +104,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Mon Sep 16 2019 Petr Pisar <ppisar@redhat.com> - 4.007-7
+- Finish bootstrapping perl-Sereal-Decoder
+
 * Fri Jul 26 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.007-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
