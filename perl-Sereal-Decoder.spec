@@ -1,6 +1,6 @@
 Name:           perl-Sereal-Decoder
-Version:        4.007
-Release:        7%{?dist}
+Version:        4.008
+Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 # miniz.c:                  Unlicense (unbundled)
@@ -28,7 +28,6 @@ BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.0
 # File::Spec not used in inc/Sereal/BuildTools.pm
 BuildRequires:  perl(strict)
 BuildRequires:  perl(warnings)
-BuildRequires:  sed
 # Run-time:
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(Exporter)
@@ -72,16 +71,16 @@ and feature-rich binary protocol called Sereal.
 %setup -q -n Sereal-Decoder-%{version}
 # Remove bundled Perl modules
 rm -r ./inc/Devel
-sed -i -e '/^inc\/Devel\//d' MANIFEST
+perl -i -ne 'print $_ unless m{^inc/Devel/}' MANIFEST
 # Remove bundled csnappy
 rm -r ./snappy
-sed -i -e '/^snappy\//d' MANIFEST
+perl -i -ne 'print $_ unless m{^snappy/}' MANIFEST
 # Remove bundled miniz
 rm miniz.*
-sed -i -e '/^miniz\./d' MANIFEST
+perl -i -ne 'print $_ unless m{^miniz\.}' MANIFEST
 # Remove bundled zstd
 rm -r zstd
-sed -i -e '/^zstd\//d' MANIFEST
+perl -i -ne 'print $_ unless m{^zstd/}' MANIFEST
 
 %build
 unset DEBUG SEREAL_USE_BUNDLED_LIBS SEREAL_USE_BUNDLED_CSNAPPY \
@@ -104,6 +103,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Thu Jan 30 2020 Petr Pisar <ppisar@redhat.com> - 4.008-1
+- 4.008 bump
+
 * Mon Sep 16 2019 Petr Pisar <ppisar@redhat.com> - 4.007-7
 - Finish bootstrapping perl-Sereal-Decoder
 
