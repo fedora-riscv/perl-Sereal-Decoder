@@ -1,5 +1,5 @@
 Name:           perl-Sereal-Decoder
-Version:        4.011
+Version:        4.012
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -49,6 +49,7 @@ BuildRequires:  perl(overload)
 BuildRequires:  perl(Scalar::Util)
 BuildRequires:  perl(Storable)
 BuildRequires:  perl(Test::LongString)
+BuildRequires:  perl(Test::MemoryGrowth)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
 BuildRequires:  perl(threads)
@@ -105,6 +106,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Thu Jun 11 2020 Petr Pisar <ppisar@redhat.com> - 4.012-1
+- 4.012 bump
+
 * Tue Feb 04 2020 Petr Pisar <ppisar@redhat.com> - 4.011-1
 - 4.011 bump
 
