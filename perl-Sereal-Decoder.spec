@@ -1,5 +1,5 @@
 Name:           perl-Sereal-Decoder
-Version:        4.012
+Version:        4.014
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -7,7 +7,6 @@ Summary:        Perl deserialization for Sereal format
 # miniz.c:                  MIT and Unlicense
 # snappy:                   BSD
 # zstd/decompress/zstd_decompress.c:    GPLv2 or BSD
-# zstd/decompress/huf_decompress.c:     BSD
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/Sereal-Decoder
 Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-%{version}.tar.gz
@@ -106,6 +105,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Mon Jun 15 2020 Petr Pisar <ppisar@redhat.com> - 4.014-1
+- 4.014 bump
+
 * Thu Jun 11 2020 Petr Pisar <ppisar@redhat.com> - 4.012-1
 - 4.012 bump
 
