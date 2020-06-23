@@ -1,6 +1,6 @@
 Name:           perl-Sereal-Decoder
 Version:        4.014
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 ## Unbundled:
@@ -105,6 +105,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Tue Jun 23 2020 Jitka Plesnikova <jplesnik@redhat.com> - 4.014-2
+- Perl 5.32 rebuild
+
 * Mon Jun 15 2020 Petr Pisar <ppisar@redhat.com> - 4.014-1
 - 4.014 bump
 
