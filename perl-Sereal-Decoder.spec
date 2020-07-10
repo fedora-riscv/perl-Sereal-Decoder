@@ -1,5 +1,8 @@
+# Perform optinal tests
+%bcond_without perl_Sereal_Decoder_enables_optional_test
+
 Name:           perl-Sereal-Decoder
-Version:        4.015
+Version:        4.017
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -48,13 +51,14 @@ BuildRequires:  perl(overload)
 BuildRequires:  perl(Scalar::Util)
 BuildRequires:  perl(Storable)
 BuildRequires:  perl(Test::LongString)
-BuildRequires:  perl(Test::MemoryGrowth)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
 BuildRequires:  perl(threads)
 # Time::HiRes not used
 BuildRequires:  perl(utf8)
+%if %{with perl_Sereal_Decoder_enables_optional_test}
 # Optional tests:
+BuildRequires:  perl(Test::MemoryGrowth)
 %if !%{defined perl_bootstrap}
 # Some tests require Sereal::Encoder 3.005003, but most of them do not require
 # exact version. Thus do not constrain the version here.
@@ -62,6 +66,7 @@ BuildRequires:  perl(Sereal::Encoder)
 BuildRequires:  perl(Tie::Array)
 BuildRequires:  perl(Tie::Hash)
 BuildRequires:  perl(Tie::Scalar)
+%endif
 %endif
 Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
@@ -105,6 +110,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Fri Jul 10 2020 Petr Pisar <ppisar@redhat.com> - 4.017-1
+- 4.017 bump
+
 * Wed Jul 08 2020 Petr Pisar <ppisar@redhat.com> - 4.015-1
 - 4.015 bump
 
