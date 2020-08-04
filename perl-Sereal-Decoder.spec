@@ -2,8 +2,8 @@
 %bcond_without perl_Sereal_Decoder_enables_optional_test
 
 Name:           perl-Sereal-Decoder
-Version:        4.017
-Release:        2%{?dist}
+Version:        4.018
+Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 ## Unbundled:
@@ -110,6 +110,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Tue Aug 04 2020 Petr Pisar <ppisar@redhat.com> - 4.018-1
+- 4.018 bump
+
 * Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.017-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
