@@ -3,7 +3,7 @@
 
 Name:           perl-Sereal-Decoder
 Version:        4.018
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 ## Unbundled:
@@ -110,6 +110,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 4.018-3
+- Perl 5.34 rebuild
+
 * Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.018-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
