@@ -3,7 +3,7 @@
 
 Name:           perl-Sereal-Decoder
 Version:        4.018
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 ## Unbundled:
@@ -110,6 +110,9 @@ make test
 %{_mandir}/man3/*
 
 %changelog
+* Mon May 24 2021 Jitka Plesnikova <jplesnik@redhat.com> - 4.018-4
+- Perl 5.34 re-rebuild of bootstrapped packages
+
 * Fri May 21 2021 Jitka Plesnikova <jplesnik@redhat.com> - 4.018-3
 - Perl 5.34 rebuild
 
