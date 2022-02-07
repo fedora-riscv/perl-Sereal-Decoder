@@ -2,8 +2,8 @@
 %bcond_without perl_Sereal_Decoder_enables_optional_test
 
 Name:           perl-Sereal-Decoder
-Version:        4.018
-Release:        6%{?dist}
+Version:        4.019
+Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 ## Unbundled:
@@ -13,6 +13,7 @@ Summary:        Perl deserialization for Sereal format
 License:        GPL+ or Artistic
 URL:            https://metacpan.org/release/Sereal-Decoder
 Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-%{version}.tar.gz
+# Build
 BuildRequires:  coreutils
 BuildRequires:  csnappy-devel
 BuildRequires:  findutils
@@ -92,24 +93,32 @@ perl -i -ne 'print $_ unless m{^zstd/}' MANIFEST
 %build
 unset DEBUG SEREAL_USE_BUNDLED_LIBS SEREAL_USE_BUNDLED_CSNAPPY \
     SEREAL_USE_BUNDLED_MINIZ SEREAL_USE_BUNDLED_ZSTD
-perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1 OPTIMIZE="$RPM_OPT_FLAGS"
+perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1 OPTIMIZE="%{optflags}"
 %{make_build}
 
 %install
 %{make_install}
-find $RPM_BUILD_ROOT -type f -name '*.bs' -size 0 -delete
-%{_fixperms} $RPM_BUILD_ROOT/*
+find %{buildroot} -type f -name '*.bs' -empty -delete
+%{_fixperms} -c %{buildroot}
 
 %check
 make test
 
 %files
 %doc Changes
-%{perl_vendorarch}/auto/*
-%{perl_vendorarch}/Sereal*
-%{_mandir}/man3/*
+%{perl_vendorarch}/auto/Sereal/
+%{perl_vendorarch}/Sereal/
+%{_mandir}/man3/Sereal::Decoder.3*
+%{_mandir}/man3/Sereal::Performance.3*
 
 %changelog
+* Mon Feb  7 2022 Paul Howarth <paul@city-fan.org> - 4.019-1
+- Update to 4.019
+  - Fix build issue with latest perl
+  - Update bundled zstd to 1.5.1 (note: this package uses system zstd)
+- Fix permissions verbosely
+- Make %%files list more explicit
+
 * Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.018-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
