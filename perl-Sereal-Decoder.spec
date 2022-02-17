@@ -2,7 +2,7 @@
 %bcond_without perl_Sereal_Decoder_enables_optional_test
 
 Name:           perl-Sereal-Decoder
-Version:        4.019
+Version:        4.020
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -112,6 +112,10 @@ make test
 %{_mandir}/man3/Sereal::Performance.3*
 
 %changelog
+* Thu Feb 17 2022 Paul Howarth <paul@city-fan.org> - 4.020-1
+- Update to 4.020
+  - Fix "panic: free from wrong pool" errors on threaded builds
+
 * Mon Feb  7 2022 Paul Howarth <paul@city-fan.org> - 4.019-1
 - Update to 4.019
   - Fix build issue with latest perl
