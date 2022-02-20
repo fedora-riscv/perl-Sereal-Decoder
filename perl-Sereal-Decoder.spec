@@ -2,7 +2,7 @@
 %bcond_without perl_Sereal_Decoder_enables_optional_test
 
 Name:           perl-Sereal-Decoder
-Version:        4.022
+Version:        4.023
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -112,6 +112,11 @@ make test
 %{_mandir}/man3/Sereal::Performance.3*
 
 %changelog
+* Sun Feb 20 2022 Paul Howarth <paul@city-fan.org> - 4.023-1
+- Update to 4.023
+  - Make it possible to upgrade with passing tests when using
+    Sereal::Decoder 4.015-4.019 on threaded debugging perls
+
 * Sat Feb 19 2022 Paul Howarth <paul@city-fan.org> - 4.022-1
 - Update to 4.022
   - Better logic to make it possible to upgrade with passing tests when using
