@@ -3,7 +3,7 @@
 
 Name:           perl-Sereal-Decoder
 Version:        4.023
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 ## Unbundled:
@@ -112,6 +112,9 @@ make test
 %{_mandir}/man3/Sereal::Performance.3*
 
 %changelog
+* Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.023-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
 * Fri Jun 03 2022 Jitka Plesnikova <jplesnik@redhat.com> - 4.023-3
 - Perl 5.36 re-rebuild of bootstrapped packages
 
