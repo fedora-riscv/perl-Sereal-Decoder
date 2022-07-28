@@ -2,8 +2,8 @@
 %bcond_without perl_Sereal_Decoder_enables_optional_test
 
 Name:           perl-Sereal-Decoder
-Version:        4.023
-Release:        4%{?dist}
+Version:        4.025
+Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 ## Unbundled:
@@ -59,6 +59,7 @@ BuildRequires:  perl(threads)
 BuildRequires:  perl(utf8)
 %if %{with perl_Sereal_Decoder_enables_optional_test}
 # Optional tests:
+BuildRequires:  perl(Hash::Util)
 BuildRequires:  perl(Test::MemoryGrowth)
 %if !%{defined perl_bootstrap}
 # Some tests require Sereal::Encoder 3.005003, but most of them do not require
@@ -112,6 +113,16 @@ make test
 %{_mandir}/man3/Sereal::Performance.3*
 
 %changelog
+* Thu Jul 28 2022 Paul Howarth <paul@city-fan.org> - 4.025-1
+- Update to 4.025
+  - Changes to the FREEZE/THAW mechanism
+    - Remove the part that says that FREEZE cannot return a list; it can, and
+      we have supported it for a very long time, although I have not checked
+      how far back this support goes
+    - If you use the FREEZE/THAW API's you should upgrade to this version
+  - Test fixes for t/020_sort_keys.t hanging on some perls that do not come
+    bundled with Hash::Util
+
 * Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.023-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
