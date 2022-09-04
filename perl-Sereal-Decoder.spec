@@ -2,7 +2,7 @@
 %bcond_without perl_Sereal_Decoder_enables_optional_test
 
 Name:           perl-Sereal-Decoder
-Version:        4.025
+Version:        5.001
 Release:        1%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
@@ -10,7 +10,7 @@ Summary:        Perl deserialization for Sereal format
 # miniz.c:                  MIT and Unlicense
 # snappy:                   BSD
 # zstd/decompress/zstd_decompress.c:    GPLv2 or BSD
-License:        GPL+ or Artistic
+License:        GPL-1.0-or-later OR Artistic-1.0-Perl
 URL:            https://metacpan.org/release/Sereal-Decoder
 Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-%{version}.tar.gz
 # Build
@@ -113,6 +113,13 @@ make test
 %{_mandir}/man3/Sereal::Performance.3*
 
 %changelog
+* Sun Sep  4 2022 Paul Howarth <paul@city-fan.org> - 5.001-1
+- Update to 5.001
+  - First official release of protocol 5
+    - Better support for non-standard NV types
+    - Support for the new Perl 5.36 bools
+- Use SPDX-format license tag
+
 * Thu Jul 28 2022 Paul Howarth <paul@city-fan.org> - 4.025-1
 - Update to 4.025
   - Changes to the FREEZE/THAW mechanism
