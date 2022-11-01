@@ -1,11 +1,9 @@
-%define perl_bootstrap 1
-
 # Perform optinal tests
 %bcond_without perl_Sereal_Decoder_enables_optional_test
 
 Name:           perl-Sereal-Decoder
 Version:        5.001
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 ## Unbundled:
@@ -115,6 +113,9 @@ make test
 %{_mandir}/man3/Sereal::Performance.3*
 
 %changelog
+* Tue Nov 01 2022 Petr Pisar <ppisar@redhat.com> - 5.001-3
+- Finish bootstrapping against miniz-3.0.0 (bug #2137798)
+
 * Tue Nov 01 2022 Petr Pisar <ppisar@redhat.com> - 5.001-2
 - Rebuild against miniz-3.0.0 (bug #2137798)
 
