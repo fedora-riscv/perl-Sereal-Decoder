@@ -1,9 +1,11 @@
+%define perl_bootstrap 1
+
 # Perform optinal tests
 %bcond_without perl_Sereal_Decoder_enables_optional_test
 
 Name:           perl-Sereal-Decoder
 Version:        5.001
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 ## Unbundled:
@@ -113,6 +115,9 @@ make test
 %{_mandir}/man3/Sereal::Performance.3*
 
 %changelog
+* Tue Nov 01 2022 Petr Pisar <ppisar@redhat.com> - 5.001-2
+- Rebuild against miniz-3.0.0 (bug #2137798)
+
 * Sun Sep  4 2022 Paul Howarth <paul@city-fan.org> - 5.001-1
 - Update to 5.001
   - First official release of protocol 5
