@@ -1,9 +1,10 @@
 # Perform optinal tests
 %bcond_without perl_Sereal_Decoder_enables_optional_test
+%global perl_bootstrap 0
 
 Name:           perl-Sereal-Decoder
 Version:        5.004
-Release:        4%{?dist}
+Release:        4.rv64~bootstrap%{?dist}
 Summary:        Perl deserialization for Sereal format
 # lib/Sereal/Decoder.pm:    GPL+ or Artistic
 ## Unbundled:
@@ -61,7 +62,7 @@ BuildRequires:  perl(utf8)
 # Optional tests:
 BuildRequires:  perl(Hash::Util)
 BuildRequires:  perl(Test::MemoryGrowth)
-%if !%{defined perl_bootstrap}
+%if %{perl_bootstrap}
 # Some tests require Sereal::Encoder 3.005003, but most of them do not require
 # exact version. Thus do not constrain the version here.
 BuildRequires:  perl(Sereal::Encoder)
